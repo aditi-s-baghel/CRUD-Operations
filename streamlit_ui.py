@@ -8,6 +8,21 @@ st.set_page_config(page_title="CRUD Operations", page_icon="📁")
 
 st.title("📁 CRUD Operations Project")
 
+# ---------------- DISPLAY FILES ---------------- #
+
+st.subheader("📂 Existing Files & Folders")
+
+BASE_DIR = Path(__file__).parent
+
+items = list(BASE_DIR.iterdir())
+
+if items:
+    for item in items:
+        if item.name != "__pycache__":
+            st.write("📄" if item.is_file() else "📁", item.name)
+else:
+    st.info("No files or folders found.")
+
 # ---------------- FILE OPERATIONS ---------------- #
 
 def create_file(file_name, content):
